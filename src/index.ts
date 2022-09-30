@@ -2,8 +2,13 @@
 import yargs, { showHelp } from "yargs"
 import exec from "child_process";
 import messages from "./constants/messages";
+import { isVtexCli } from "./utils/isVtexCli";
 
 exec.exec(`node dist/src/test1.js`, (error, stdout, stderr) => {
+
+
+
+
   if (error) {
     console.log(`error: ${error.message}`);
     return;
@@ -18,20 +23,20 @@ exec.exec(`node dist/src/test1.js`, (error, stdout, stderr) => {
 
 
 async function main() {
+  await isVtexCli();
 
-yargs
-  .usage(messages.help)
-  .option("l", {
-    alias: "languages",
-    describe: "List all supported languages.",
-    type: "boolean",
-    demandOption: false,
-  })
+  yargs
+    .usage(messages.help)
+    .option("l", {
+      alias: "languages",
+      describe: "List all supported languages.",
+      type: "boolean",
+      demandOption: false,
+    })
     .help(true)
-  .argv;
+    .argv;
 
-
-  const isThereAnyArgument = (await yargs.argv)._.length >= 1
+  const isThereAnyArgument = (yargs.argv)._.length >= 1
 
   if(!isThereAnyArgument) {
     showHelp()
