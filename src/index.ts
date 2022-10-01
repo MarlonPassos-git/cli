@@ -36,7 +36,7 @@ async function main() {
     .help(true)
     .argv;
 
-  const isThereAnyArgument = (yargs.argv)._.length >= 1
+  const isThereAnyArgument = (await yargs.argv)._.length >= 1
 
   if(!isThereAnyArgument) {
     showHelp()
