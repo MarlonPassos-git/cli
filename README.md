@@ -15,6 +15,10 @@ Pode não parecer muito, mas fazer isso diversas vezes ao dia, acaba se tornando
 Por isso criei esse projeto, para facilitar esse processo.
 
 
+## Atenção 
+
+Esse CLI, não esta funcionando muito bem no windows 11 com WSL2 e o Ubuntu 22.04. Em se você estiver com essa configuração remendo que use a parte do seu sistema operacional nativo.
+
 ## Tarefeas
 
 [ ] Verificar se a pessoa tem o CLI da VTEX instalada
