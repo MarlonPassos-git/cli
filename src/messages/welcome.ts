@@ -8,6 +8,6 @@ export function welcome () {
   console.clear();
   figlet(libName, (_, data) => {
     console.log(`${gradient.pastel.multiline(data)}\n`);
-    console.log(chalk.green(messages.welcomePhase));
+    console.log(chalk.green(messages.welcomePhase) + '\n');
   })
 }
