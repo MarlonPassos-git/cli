@@ -1,21 +1,4 @@
-import { cli } from "./utils/cli";
-import messages from "./constants/messages";
-import path from "path";
-
-export const BASE_SCRIPT = "./dist/src/index";
-jest.setTimeout(30000);
-const command = `node ${path.resolve(BASE_SCRIPT)}`;
 describe('e2e', () => {
-  it(`Meu script deve existir na base ${BASE_SCRIPT}`, async () => {
-
-
-    const result = await cli(command);
-    expect(result.error).toBeNull();
-  })
-
-  it("se não não passarmos nehum argumento, deve mostra texto de help", async () => {
-    const result = await cli(command);
-    expect(result.stderr).toContain(messages.help);
-  });
+  it.todo('should do something')
 })
 

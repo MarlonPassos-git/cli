@@ -1,5 +1,5 @@
-import errorMessages from "../constants/errorMessages.js";
-import { cli } from "./cli.js";
+import errorMessages from "../constants/errorMessages";
+import { cli } from "./cli";
 
 export async function isVtexCli() {
   const result = await cli("vtex")
