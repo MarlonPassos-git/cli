@@ -22,6 +22,7 @@
     "test": "jest",
     "clean": "rm -rf dist build package",
     "cli": "node dist/src/index.js",
+    "bagunca": "node dist/src/baguncinha.js",
     "ts-node": "ts-node",
     "build": "tsc -p tsconfig.json",
     "dev:w": "tsc -p tsconfig.json --watch",
@@ -33,6 +34,7 @@
   "devDependencies": {
     "@types/chalk-animation": "^1.6.1",
     "@types/cli-progress": "^3.11.0",
+    "@types/figlet": "^1.5.5",
     "@types/gradient-string": "^1.1.2",
     "@types/inquirer": "^9.0.2",
     "@types/jest": "^29.1.1",

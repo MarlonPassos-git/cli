@@ -7,6 +7,7 @@ import inquirer from "inquirer";
 import gradient from "gradient-string"
 import chalkAnimation from "chalk-animation";
 import { createSpinner } from "nanospinner";
+import figlet from 'figlet';
 
 chalk;
 inquirer;
@@ -60,7 +61,9 @@ async function main() {
 }
 
 
-let playerNames: string
+
+
+let playerName: string
 const sleep = (ms = 2000) => new Promise(r => setTimeout(r, ms))
 
 async function welcome() {
@@ -73,7 +76,20 @@ async function welcome() {
   ${chalk.bgBlue("HOW TO PLAY")}
   I am a process on your compouter
   `)
+}
 
+function winner() {
+  console.clear();
+  figlet(`Congrats , ${playerName} !\n $ 1 , 0 0 0 , 0 0 0`, (_, data) => {
+    console.log(gradient.pastel.multiline(data) + '\n');
+
+    console.log(
+      chalk.green(
+        `Programming isn't about what you know; it's about making the command line look cool`
+      )
+    );
+    process.exit(0);
+  })
 }
 
 async function handleAnswer(isCorrect: boolean) {
@@ -96,4 +112,4 @@ await welcome()
 await aksName()
 const a = await question1()
 await handleAnswer(true)
-console.log(a)
+await winner()
