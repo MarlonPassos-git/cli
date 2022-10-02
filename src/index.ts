@@ -1,29 +1,17 @@
 #! /usr/bin/env node
 import yargs, { showHelp } from "yargs"
-import exec from "child_process";
 import messages from "./constants/messages";
+import { cli } from "./utils/cli";
 import { isVtexCli } from "./utils/isVtexCli";
 
-exec.exec(`node dist/src/test1.js`, (error, stdout, stderr) => {
-
-
-
-
-  if (error) {
-    console.log(`error: ${error.message}`);
-    return;
-  }
-  if (stderr) {
-    console.log(`stderr: ${stderr}`);
-    return;
-  }
-  console.log(`stdout: ${stdout}`);
-});
-
-
-
 async function main() {
+  console.log("Verificando se esta instalado o VTEX CLI");
+  const a = await cli("ls")
+  console.log(a)
   await isVtexCli();
+
+  console.log("1")
+  console.log("2")
 
   yargs
     .usage(messages.help)

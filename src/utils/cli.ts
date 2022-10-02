@@ -8,9 +8,8 @@ type CliResult = {
 export function cli(command: string): Promise<CliResult> {
 
   return new Promise<CliResult>(resolve => {
-    const comand = `${command}`;
 
-    exec(comand, (error, stdout, stderr) => {
+    exec(command, (error, stdout, stderr) => {
       resolve({
         error,
         stdout,
