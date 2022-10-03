@@ -3,6 +3,8 @@ export default {
   welcomePhase: "Conjunto de ferramente para facilita seu dia a dia de trabalho com VTEX IO", 
   verificaVtex: "Verificando se você tem o VTEX CLI instalado",
   vtexEncontrado: "VTEX CLI encontrado",
+  vtexProjetct: "Verificando se você está em um projeto VTEX",
+  vtexProjetctFound: "Projeto VTEX encontrado",
 }
 
 export const questions = {
