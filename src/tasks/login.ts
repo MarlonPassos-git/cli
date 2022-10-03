@@ -6,6 +6,7 @@ import { getAccountName } from "../utils/getAccountName";
 import { cli } from "../utils/cli";
 import { getCurrentBranchGit } from "../utils/getCurrentBranchGit";
 import { getCodeTarefa } from "../utils/getCodeTarefa";
+import { criaWorkspace } from "../utils/criaWorkspace";
 
 export async function login() {
     const spiner1 = createSpinner(messages.verificaVtex).start();
@@ -54,8 +55,19 @@ export async function login() {
     // ----------------------------
 
     const currentBranch = await getCurrentBranchGit()
+    const tarefaCode = getCodeTarefa(currentBranch)
+    const spiner4 = createSpinner(messages.vtexLogin).start();
 
-    const tarefaCode =  getCodeTarefa(currentBranch)
+    await criaWorkspace(tarefaCode).then(() => { 
+        spiner4.success({
+            text: "criado workspace " + tarefaCode,
+        });
+    }).catch((err) => { 
+        spiner4.error({
+            text: "Erro ao criar workspace",
+        });
+        throw err;
+    })
 
     process.exit(0);
 }
