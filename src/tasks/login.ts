@@ -4,6 +4,7 @@ import messages from "../constants/messages";
 import { isVtexProject } from "../utils/isVtexProject";
 import { getAccountName } from "../utils/getAccountName";
 import { cli } from "../utils/cli";
+import { getCurrentBranchGit } from "../utils/getCurrentBranchGit";
 
 export async function login() {
     const spiner1 = createSpinner(messages.verificaVtex).start();
@@ -48,5 +49,12 @@ export async function login() {
         });
         throw err;
     })
+
+    // ----------------------------
+
+    const currentBranch = await getCurrentBranchGit()
+
+    
+
     process.exit(0);
 }
