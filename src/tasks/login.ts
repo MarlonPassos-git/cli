@@ -3,6 +3,7 @@ import { isVtexCli } from "../utils/isVtexCli";
 import messages from "../constants/messages";
 import { isVtexProject } from "../utils/isVtexProject";
 import { getAccountName } from "../utils/getAccountName";
+import { cli } from "../utils/cli";
 
 export async function login() {
     const spiner1 = createSpinner(messages.verificaVtex).start();
@@ -33,6 +34,19 @@ export async function login() {
 
     // ----------------------------
     const accountName = await getAccountName()
-    console.log(accountName)
+    
+
+    const spiner3 = createSpinner(messages.vtexLogin).start();
+
+    await cli("vtex login " + accountName).then(() => { 
+        spiner3.success({
+            text: messages.vtexLoginSuccess + "em " + accountName,
+        });
+    }).catch((err) => { 
+        spiner3.error({
+            text: "Erro ao fazer login",
+        });
+        throw err;
+    })
     process.exit(0);
 }

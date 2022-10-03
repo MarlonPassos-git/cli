@@ -5,6 +5,8 @@ export default {
   vtexEncontrado: "VTEX CLI encontrado",
   vtexProjetct: "Verificando se você está em um projeto VTEX",
   vtexProjetctFound: "Projeto VTEX encontrado",
+  vtexLogin: "Fazendo login na VTEX",
+  vtexLoginSuccess: "Login feito com sucesso",
 }
 
 export const questions = {
