@@ -12,6 +12,7 @@ import { tasks} from "./constants/commons";
 const { CREATE_COMPONENT, LOGIN } = tasks;
 
 
+
 welcome();
 await sleep(1000);
 if (hasTwoComands(argv)) caNotTwoComands();
@@ -35,4 +36,5 @@ else if (isLogin) await login();
 
 
 
-console.log("main1")
+
+

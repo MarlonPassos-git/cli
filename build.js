@@ -20,7 +20,7 @@ function arrumaPath() {
 
     filePaths.forEach((filepath) => {
       fs.readFile(filepath, 'utf8', (err, data) => {
-        console.log(data)
+
         if (!data.match(/import .* from /g)) {
           return
         }
@@ -70,4 +70,6 @@ function deletedDist() {
   await deletedDist()
   await build()
   arrumaPath()
+
+  console.log('Build finalizado')
 })();
