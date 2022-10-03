@@ -5,6 +5,7 @@ import { isVtexProject } from "../utils/isVtexProject";
 import { getAccountName } from "../utils/getAccountName";
 import { cli } from "../utils/cli";
 import { getCurrentBranchGit } from "../utils/getCurrentBranchGit";
+import { getCodeTarefa } from "../utils/getCodeTarefa";
 
 export async function login() {
     const spiner1 = createSpinner(messages.verificaVtex).start();
@@ -54,7 +55,7 @@ export async function login() {
 
     const currentBranch = await getCurrentBranchGit()
 
-    
+    const tarefaCode =  getCodeTarefa(currentBranch)
 
     process.exit(0);
 }
