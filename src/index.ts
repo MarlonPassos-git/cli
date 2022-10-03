@@ -1,23 +1,38 @@
 #!/usr/bin/env node
 
-import { welcome } from "./messages/welcome.js";
-import { whatDoYouWantToDo } from "./messages/whatDoYouWantToDo.js";
-import { sleep } from "./utils/sleep.js";
-import { login } from "./tasks/login.js";
-import { createComponent } from "./tasks/createComponent.js";
-import { argv } from "./constants/yargs.js";
-import { hasTwoComands } from "./utils/hasTwoComands.js";
-import { caNotTwoComands } from "./messages/caNotTwoComands.js";
+import { welcome } from "./messages/welcome";
+import { whatDoYouWantToDo } from "./messages/whatDoYouWantToDo";
+import { sleep } from "./utils/sleep";
+import { login } from "./tasks/login";
+import { createComponent } from "./tasks/createComponent";
+import { argv } from "./constants/yargs";
+import { hasTwoComands } from "./utils/hasTwoComands";
+import { caNotTwoComands } from "./messages/caNotTwoComands";
+import { tasks} from "./constants/commons";
+const { CREATE_COMPONENT, LOGIN } = tasks;
+
 
 welcome();
 await sleep(1000);
-
 if (hasTwoComands(argv)) caNotTwoComands();
 
-if (argv.login) await login();
-if (argv.createComponent)  await createComponent();
+
+if (argv[LOGIN]) await login();
+else if (argv[CREATE_COMPONENT]) await createComponent();
+
+
+const result = await whatDoYouWantToDo()
+
+const isCreateComponent = result === CREATE_COMPONENT
+const isLogin = result === LOGIN
+
+
+if (isCreateComponent) await createComponent();
+else if (isLogin) await login();
+
+
+
+
 
 
 console.log("main1")
-
-console.log(argv)

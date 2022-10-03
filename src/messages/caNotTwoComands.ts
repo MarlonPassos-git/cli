@@ -1,5 +1,5 @@
 import chalk from "chalk"
-import errorMessages from "../constants/errorMessages.js";
+import errorMessages from "../constants/errorMessages";
 
 export function caNotTwoComands() {
   console.log(`❌ ${chalk.red(errorMessages.caNotTwoComands)}` + '\n');

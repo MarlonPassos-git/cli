@@ -1,8 +1,8 @@
 import figlet from 'figlet';
 import gradient from 'gradient-string';
 import chalk from "chalk"
-import { libName } from "../constants/commons.js";
-import messages from "../constants/messages.js";
+import { libName } from "../constants/commons";
+import messages from "../constants/messages";
 
 export function welcome () {
   console.clear();

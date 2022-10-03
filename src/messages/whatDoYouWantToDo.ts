@@ -1,5 +1,7 @@
 import inquirer from "inquirer";
-import { questions } from "../constants/messages.js";
+import { tasks, Tasks } from "../constants/commons";
+import { questions } from "../constants/messages";
+const { LOGIN, CREATE_COMPONENT } = tasks;
 
 const {
   whatDoYouWantToDo: {
@@ -8,7 +10,7 @@ const {
   }
 } = questions
 
-export async function whatDoYouWantToDo() { 
+export async function whatDoYouWantToDo(): Promise<Tasks> { 
   const { whatDoYouWantToDo } = await inquirer.prompt([
     {
       type: "list",
@@ -18,5 +20,8 @@ export async function whatDoYouWantToDo() {
     },
   ]);
 
-  return whatDoYouWantToDo
+  if (whatDoYouWantToDo === choices[0]) return CREATE_COMPONENT;
+  else if (whatDoYouWantToDo === choices[1]) return LOGIN;
+
+  throw new Error("whatDoYouWantToDo: Invalid choice");
 }
