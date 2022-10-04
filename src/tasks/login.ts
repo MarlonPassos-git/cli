@@ -7,6 +7,7 @@ import { cli } from "../utils/cli";
 import { getCurrentBranchGit } from "../utils/getCurrentBranchGit";
 import { getCodeTarefa } from "../utils/getCodeTarefa";
 import { criaWorkspace } from "../utils/criaWorkspace";
+import { formatCode } from "../utils/formatCode";
 
 export async function login() {
     const spiner1 = createSpinner(messages.verificaVtex).start();
@@ -56,9 +57,10 @@ export async function login() {
 
     const currentBranch = await getCurrentBranchGit()
     const tarefaCode = getCodeTarefa(currentBranch)
+    const tarefaCodeFormated = formatCode(tarefaCode)
     const spiner4 = createSpinner(messages.vtexLogin).start();
 
-    await criaWorkspace(tarefaCode).then(() => { 
+    await criaWorkspace(tarefaCodeFormated).then(() => { 
         spiner4.success({
             text: "criado workspace " + tarefaCode,
         });
