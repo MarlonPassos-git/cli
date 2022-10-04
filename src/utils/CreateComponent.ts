@@ -36,6 +36,7 @@ export class CreateComponent {
     await this.createFolder();
     await this.createFileInsideComponent()
     await this.arquivoExportacaoVtex();
+    await this.adiconaConfiguracaoNoInterfacejson();
   }
 
   async createFileInsideComponent() {
@@ -53,4 +54,31 @@ export class CreateComponent {
     await fs.writeFile(path, TEMPLATE_ARQUIVO_EXPORTACAO_VTEX.replace(/componentName/g, this.nomeEmMaisculo));
   }
 
+  async adiconaConfiguracaoNoInterfacejson() { 
+    const path = `${this.path}/store/interfaces.json`;
+    const interfaceJson = await fs.readFile(path, "utf-8");
+    const interfaceJsonParse = JSON.parse(interfaceJson);
+
+    const data = {
+      ...interfaceJsonParse,
+      ...formataConfiguraInterface(this.nomeEmMaisculo)
+    }
+    await fs.writeFile(path, JSON.stringify(data, null, 2));
+  }
+}
+
+function formataConfiguraInterface(componentName: string) { 
+  const componenteJsonName = formataNomeParaNomeDoArquivo(componentName);
+
+  return {
+    [componenteJsonName]: {
+      "component": componentName
+    },
+  }
+}
+
+// Se receber um nome assim : ComponenteBase -> componente-base
+
+function formataNomeParaNomeDoArquivo(componentName: string) {
+  return componentName.split(/(?=[A-Z])/).join("-").toLowerCase();
 }

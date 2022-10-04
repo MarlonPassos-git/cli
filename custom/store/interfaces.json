@@ -1,3 +1,14 @@
 {
-  
+  "reseller-form-wrapper": {
+    "component": "ResellerFormWrapper"
+  },
+  "safadao": {
+    "component": "Safadao"
+  },
+  "safadao-e-bao": {
+    "component": "SafadaoEBao"
+  },
+  "bistequinha": {
+    "component": "Bistequinha"
+  }
 }
