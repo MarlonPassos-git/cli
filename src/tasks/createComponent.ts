@@ -1,4 +1,5 @@
 import inquirer from "inquirer";
+import { getDiretoriesWithHasFolderReact } from "../utils/getDiretoriesWithHasFolderReact";
 import { getManifestRootAndInsideDirerectories } from "../utils/getManifestRootAndInsideDirerectories";
 import { removeManifesf } from "../utils/removeManifesf";
 
@@ -19,8 +20,19 @@ export async function createComponent(name?: string) {
 
   const manifestPathList = await getManifestRootAndInsideDirerectories()
   const diretoriosQueTemManifest = removeManifesf(manifestPathList)
-  console.log(diretoriosQueTemManifest);
+  const listaPossiveisLocais = getDiretoriesWithHasFolderReact(diretoriosQueTemManifest)
   
+  const { whereDoYouWantToCreate } = await inquirer.prompt([
+    {
+      type: "list",
+      name: "whereDoYouWantToCreate",
+      message: "Onde você quer criar o componente?",
+      choices: listaPossiveisLocais,
+    },
+  ]);
+  
+  console.log(whereDoYouWantToCreate);
+
 }
   
 
