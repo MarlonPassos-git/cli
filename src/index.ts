@@ -19,17 +19,18 @@ if (hasTwoComands(argv)) caNotTwoComands();
 
 
 if (argv[LOGIN]) await login();
-else if (argv[CREATE_COMPONENT]) await createComponent();
+else if (argv[CREATE_COMPONENT]) await createComponent(argv[CREATE_COMPONENT]);
+else { 
+  const result = await whatDoYouWantToDo()
+  
+  const isCreateComponent = result === CREATE_COMPONENT
+  const isLogin = result === LOGIN
+  
+  
+  if (isCreateComponent) await createComponent();
+  else if (isLogin) await login();
+}
 
-
-const result = await whatDoYouWantToDo()
-
-const isCreateComponent = result === CREATE_COMPONENT
-const isLogin = result === LOGIN
-
-
-if (isCreateComponent) await createComponent();
-else if (isLogin) await login();
 
 
 
