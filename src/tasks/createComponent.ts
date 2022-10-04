@@ -1,4 +1,5 @@
 import inquirer from "inquirer";
+import { CreateComponent } from "../utils/CreateComponent";
 import { getDiretoriesWithHasFolderReact } from "../utils/getDiretoriesWithHasFolderReact";
 import { getManifestRootAndInsideDirerectories } from "../utils/getManifestRootAndInsideDirerectories";
 import { removeManifesf } from "../utils/removeManifesf";
@@ -30,7 +31,12 @@ export async function createComponent(name?: string) {
       choices: listaPossiveisLocais,
     },
   ]);
-  
+  const maquinaQueVaiCriar = new CreateComponent({
+    name: componentName as string,
+    path: whereDoYouWantToCreate
+  })
+
+  maquinaQueVaiCriar.create()
   console.log(whereDoYouWantToCreate);
 
 }
