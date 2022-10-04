@@ -39,7 +39,7 @@ export async function login() {
     // ----------------------------
     const accountName = await getAccountName()
     
-
+    // TODO: verificar se o usuário já está logado
     const spiner3 = createSpinner(messages.vtexLogin).start();
 
     await cli("vtex login " + accountName).then(() => { 

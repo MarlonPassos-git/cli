@@ -76,7 +76,7 @@ export class CreateComponent {
     await fs.writeFile(path, JSON.stringify(data, null, 2));
   }
 }
-
+// 
 function formataConfiguraInterface(componentName: string) { 
   const componenteJsonName = formataNomeParaNomeDoArquivo(componentName);
 
@@ -88,7 +88,7 @@ function formataConfiguraInterface(componentName: string) {
 }
 
 // Se receber um nome assim : ComponenteBase -> componente-base
-
+// todo: mover para outro arquivo, e criar testes
 function formataNomeParaNomeDoArquivo(componentName: string) {
   return componentName.split(/(?=[A-Z])/).join("-").toLowerCase();
 }
